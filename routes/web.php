@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\home\HomeControllers;
+use App\Http\Controllers\AboutGeneral;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::controller(HomeControllers::class)->group(function (){
-    Route::get('/', "index")->name("page.home.index");
 
-    Route::get("about","about")->name("page.home.about");
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::controller(AboutGeneral::class)->middleware("aboutAuth")->group(function (){
+    Route::get("/about","about")->name("page.about");
+    Route::get("/age","ageAbout")->name("page.ageAbout");
+});
+
+//Route::get("/about",function (){
+//    return view("about");
+//});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
