@@ -15,22 +15,22 @@
 </head>
 <body class="theme-blush">
 
-<!-- Page Loader -->
-@include("admin.components.loader")
+@if(!in_array(Route::currentRouteName(), ['register', 'login','password.request']))
 
-<!-- Overlay For Sidebars -->
-@include("admin.components.overlay")
+    <!-- Page Loader -->
+    @include("admin.components.loader")
+    <!-- Overlay For Sidebars -->
+    @include("admin.components.overlay")
+    <!-- Main Search -->
+    @include("admin.components.search")
+    <!-- Right Icon menu Sidebar -->
+    @include("admin.components.navbar-right")
+    <!-- Left Sidebar -->
+    @include("admin.components.left-sidebar")
+    <!-- Right Sidebar -->
+    @include("admin.components.right-sidebar")
 
-<!-- Main Search -->
-@include("admin.components.search")
-
-<!-- Right Icon menu Sidebar -->
-@include("admin.components.navbar-right")
-
-<!-- Left Sidebar -->
-@include("admin.components.left-sidebar")
-<!-- Right Sidebar -->
-@include("admin.components.right-sidebar")
+@endif
 <!-- Main Content -->
 @yield("admin")
 <!-- Main Content -->
@@ -38,7 +38,8 @@
 <!-- Jquery Core Js -->
 <script src="{{ asset("assets/admin/bundles") }}/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
 <script src="{{ asset("assets/admin/bundles") }}/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
-
-<script src="{{ asset("assets/admin/bundles") }}/mainscripts.bundle.js"></script>
+@if(!in_array(Route::currentRouteName(), ['register', 'login','password.request']))
+    <script src="{{ asset("assets/admin/bundles") }}/mainscripts.bundle.js"></script>
+@endif
 </body>
 </html>
