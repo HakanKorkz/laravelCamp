@@ -5,10 +5,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>@yield("tittle")</title>
     @vite("resources/css/app.css")
+    @yield("headArea")
 </head>
-<body class="">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aliquam blanditiis dolore ea, eius eum facere impedit, ipsam itaque nostrum quia reiciendis sint temporibus veniam voluptate voluptates voluptatibus.
+<body class="bg-zinc-100">
+<header class="flex items-center justify-center w-full h-32 bg-eerie-black-50 shadow-lg shadow-eerie-black-500/40">
+    <navbar class="flex flex-1 justify-center gap-4 ">
+
+        <a class="w-1/12 max-lg:w-1/6 max-2xl:w-1/6 max-sm:w-4/12 text-center p-2 {{ Route::is("home") ? "bg-true-blue-1000": "bg-true-blue-800" }} rounded-lg hover:bg-true-blue-400 cursor-pointer"
+           href="{{ route("home") }}">
+            Anasayfa
+        </a>
+        <a class="w-1/12 max-lg:w-1/6 max-2xl:w-1/6 max-sm:w-4/12 text-center p-2 {{ Route::is("articles") ? "bg-true-blue-1000": "bg-true-blue-800" }} rounded-lg hover:bg-true-blue-400 cursor-pointer"
+           href="{{ route("articles") }}">
+            Articles
+        </a>
+    </navbar>
+
+</header>
+@yield("content")
+
+@yield("footer")
 </body>
 </html>
