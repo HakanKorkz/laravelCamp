@@ -9,7 +9,8 @@ class HomeController extends Controller
 {
      public function index()
     {
-       $users=User::all();
+//        toast('Feedback','success')->position('top')->timerProgressBar()->autoClose(2000);
+        $users=User::all();
       return view("home.index",["users"=>$users]);
     }
 }

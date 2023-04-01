@@ -1,13 +1,13 @@
 @extends("index")
 @section("tittle")
-
+Anasayfa
 @endsection
 
 @section("headArea")
 @endsection
 
 @section("content")
-    <main class="flex flex-wrap gap-20 justify-around container content-around mx-auto  bg-neutral-50 p-8 shadow-lg shadow-neutral-500/40 my-6">
+    <main class="flex flex-wrap gap-20 justify-around container content-around mx-auto bg-neutral-50 p-8 shadow-lg shadow-neutral-500/40 my-6">
         @foreach($users as $user)
 {{--            @dd($user)--}}
             <div class="max-w-sm flex flex-col rounded-lg overflow-hidden bg-white shadow-2xl">
