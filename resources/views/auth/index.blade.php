@@ -8,10 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield("tittle")</title>
     @vite("resources/css/app.css")
+    @yield("headerArea")
 
 </head>
 <body class="flex">
 @yield("content")
 @include('sweetalert::alert')
+@yield("footer")
+<script type="module" src="{{ asset("assets/home/js/App.js") }}"></script>
 </body>
 </html>

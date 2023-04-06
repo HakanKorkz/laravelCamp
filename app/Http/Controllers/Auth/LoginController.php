@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
-use App\Models\User;
+use App\Models\Home\User;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
@@ -22,14 +21,28 @@ class LoginController extends Controller
      return view("auth.login");
     }
 
-    public function store(AuthRequest $request)
+    public function logout(Request $request)
+    {
+        if (Auth::check()) {
+            Auth::logout();
+            $to="login";
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        } else {
+            $to="login";
+        }
+
+        return redirect("$to");
+    }
+
+    public function store(\App\Http\Requests\AuthRequest $request)
     {
         $email=$request->get("email");
         $password=$request->get("password");
 
         $user = User::where("email", "$email")->first();
-
         if ($user && Hash::check($password,$user->password)) {
+//            $boolean=true;
             Auth::login($user);
             $to="/";
 //            $tittle="Giriş başarılı";
@@ -40,6 +53,8 @@ class LoginController extends Controller
 //            $tittle="Giriş başarısız";
             $message="Girilen bilgiler hatalı gözüküyor";
             $type="error";
+//            $boolean=false;
+
         }
 
 //        alert("$tittle","$message", "$type")
@@ -49,8 +64,9 @@ class LoginController extends Controller
 
         toast("$message", "$type")->position('top')->timerProgressBar()->autoClose(2000);
 
+        return redirect($to);
 
-        return redirect("$to");
+      //  return response(["boolean"=>$boolean,"type"=>$type,"message"=>$message,"to"=>$to],200)->header('Content-Type','application/json');
     }
 
 

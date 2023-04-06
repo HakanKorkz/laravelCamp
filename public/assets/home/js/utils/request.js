@@ -4,7 +4,8 @@ const request = async (url, data = null, method = "POST") => {
         const options = {
             method: method,
             headers: {
-                'X-CSRF-TOKEN': csrfToken
+                'X-CSRF-TOKEN': csrfToken,
+                "Accept": "application/json, text/html",
             },
             body: data || null
         }

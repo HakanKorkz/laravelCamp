@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\home;
+namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Home\User;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
      public function index()
     {
 //        toast('Feedback','success')->position('top')->timerProgressBar()->autoClose(2000);
         $users=User::all();
-      return view("home.index",["users"=>$users]);
+      return view("home.authors",["users"=>$users]);
     }
 }
