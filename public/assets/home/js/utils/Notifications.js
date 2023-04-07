@@ -4,13 +4,29 @@ const notiflix = (type = "success", messages, options) => {
         case "success":
             if (option === "notify") {
                 return Notiflix.Notify.success(messages);
+            } else if (option==="report") {
+                const [,tittle]=option
+              return   Notiflix.Report.success(
+                    tittle,
+                    messages,
+                    'Kapat',
+                );
+            } else {
+                return null
             }
-            break;
             case "error":
             if (option === "notify") {
                 return Notiflix.Notify.failure(messages);
+            } else if (option==="report") {
+                const [,tittle]=options
+                return   Notiflix.Report.failure(
+                    tittle,
+                    messages,
+                    'Kapat',
+                );
+            } else {
+                return null
             }
-            break;
         default:
             return null
     }
