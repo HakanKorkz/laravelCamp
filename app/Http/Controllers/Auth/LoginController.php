@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthLoginRequest;
 use App\Models\Home\User;
 use Auth;
 use Hash;
@@ -35,7 +36,7 @@ class LoginController extends Controller
         return redirect("$to");
     }
 
-    public function store(\App\Http\Requests\AuthRequest $request)
+    public function store(AuthLoginRequest $request)
     {
         $email=$request->get("email");
         $password=$request->get("password");

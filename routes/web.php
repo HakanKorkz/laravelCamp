@@ -1,4 +1,5 @@
 <?php
+//sleep(5);
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;

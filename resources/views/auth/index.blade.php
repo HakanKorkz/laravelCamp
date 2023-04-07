@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield("tittle")</title>
     @vite("resources/css/app.css")
+    <link rel="stylesheet" href="{{ asset("assets/home/plugins/notiflix/dist/notiflix-3.2.6.min.css") }}">
     @yield("headerArea")
 
 </head>
@@ -15,6 +16,9 @@
 @yield("content")
 @include('sweetalert::alert')
 @yield("footer")
+
+{{--<script src="dist/notiflix-loading-aio-X.X.X.min.js"></script>--}}
+<script src="{{ asset("assets/home/plugins/notiflix/dist/notiflix-3.2.6.min.js") }}"></script>
 <script type="module" src="{{ asset("assets/home/js/App.js") }}"></script>
 </body>
 </html>

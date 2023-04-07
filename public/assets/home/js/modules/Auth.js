@@ -1,15 +1,37 @@
+import {Loading} from "../utils/Loading.js";
+import {requestPost} from "../utils/request.js";
+import notifications from "../utils/Notifications.js";
+
 export const login = () => {
     background()
 }
-export const register = (requestPost) => {
-background()
+export const register = () => {
+    background()
     const form = document.querySelector("form")
-    form.addEventListener("submit", async (evt) => {
+    form.addEventListener("submit", (evt) => {
         evt.preventDefault()
         evt.stopPropagation()
+        Loading(true)
         const data = new FormData(form)
-        const response = await requestPost("register", data)
-        console.log(response)
+        requestPost("register", data).then(response => {
+            let message = ""
+            if (response.errors) {
+                [response.errors].forEach(error => {
+                    console.log(error)
+                    error.email.forEach(e => {
+                        message += `${e} \n`
+                    })
+                    error.name.forEach(n => {
+                        message += `${n} \n`
+                    })
+                    error.password.forEach(p => {
+                        message += `${p} \n`
+                    })
+                })
+            }
+            notifications("notiflix", "error", message, "notify")
+            Loading(false)
+        })
     })
 }
 
