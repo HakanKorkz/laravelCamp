@@ -32,7 +32,7 @@ export const register = () => {
 const background = () => {
     document.addEventListener("DOMContentLoaded", function() {
         let elements = document.querySelectorAll("[data-background-url]");
-        elements.forEach(function (element) {
+        elements.forEach(element=> {
             let url = element.getAttribute("data-background-url");
             element.style.backgroundImage = "url(" + url + ")";
             element.classList.remove("hidden")
