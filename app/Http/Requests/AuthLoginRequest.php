@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class AuthLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,6 +33,8 @@ class AuthRequest extends FormRequest
      */
     public function messages(): array
     {
+        toast("Giriş Başarısız", "error")->position('top')->timerProgressBar()->autoClose(2000);
+
         return [
             "email.exists"=>"Bilgi bulunamadı",
             "email.email"=>"Geçerli bir e-posta gir",

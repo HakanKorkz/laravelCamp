@@ -24,12 +24,19 @@ Kayıt ol
             <p class="text-center w-full">
                 Kayıt bilgilerini aşağı da bulunan forma doldur
             </p>
+            <label for="name">
+                Adınız
+            </label>
+            <input
+                class="w-full rounded-full border border-gray-200 outline-none p-2 focus:shadow-[0px_20px_20px_10px_#00000024]"
+                id="name" name="name" type="text" value="" placeholder="Kullanıcı adı"/>
+
             <label for="email">
                 E-posta
             </label>
             <input
                 class="w-full rounded-full border border-gray-200 outline-none p-2 focus:shadow-[0px_20px_20px_10px_#00000024]"
-                id="email" name="email" type="text" value="" placeholder="E-posta"/>
+                id="email" name="email" type="email" value="" placeholder="E-posta"/>
 
             <label for="password">
                 Şifreniz

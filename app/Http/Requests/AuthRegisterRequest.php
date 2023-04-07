@@ -23,7 +23,7 @@ class AuthRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //'name' => 'required|string',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
         ];
@@ -34,8 +34,9 @@ class AuthRegisterRequest extends FormRequest
      */
     public function messages(): array
     {
+
         return [
-            #'name.required' => 'İsim alanı gereklidir.',
+            'name.required' => 'İsim alanı gereklidir.',
             'email.required' => 'E-posta alanı gereklidir.',
             'email.email' => 'Geçerli bir e-posta adresi giriniz.',
             'email.unique' => 'Bu e-posta adresi daha önce kullanılmıştır.',
