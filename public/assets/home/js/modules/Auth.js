@@ -14,16 +14,23 @@ export const register = () => {
         Loading(true)
         const data = new FormData(form)
         requestPost("register", data).then(response => {
-            let message = ""
+            let message
             let tittle
+            let option
+            let types
             if (response.errors) {
-               message=errorMessage([response.errors])
+                message = errorMessage([response.errors])
                 tittle = "İşlem başarısız"
+                option = "report"
+                types = "error"
             } else {
-                tittle = "İşlem başarılı"
+                option = "notify"
+                message = "İşlem başarılı"
+                tittle = ""
+                types = "success"
             }
 
-            notifications("notiflix", "error", message, "report", tittle)
+            notifications("notiflix", types, message, option, tittle)
             Loading(false)
         })
     })
@@ -45,14 +52,13 @@ const background = () => {
 const errorMessage = (errors) => {
 let message=""
     errors.forEach(error => {
-        console.log(error)
-        error.email.forEach(e => {
+        error.email && error?.email.forEach(e => {
             message += `${e}`
         })
-        error.name.forEach(n => {
+        error.name && error?.name.forEach(n => {
             message += `${n} <br>`
         })
-        error.password.forEach(p => {
+        error.password && error?.password.forEach(p => {
             message += `${p} <br>`
         })
     })

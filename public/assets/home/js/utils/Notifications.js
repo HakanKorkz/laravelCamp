@@ -24,6 +24,7 @@ const notiflix = (type = "success", messages, options = []) => {
     switch (type) {
         case "success":
             if (option === "notify") {
+                console.log(messages)
                 return Notiflix.Notify.success(messages);
             } else if (option === "report") {
                 return Notiflix.Report.success(title || "", messages, "Kapat");
