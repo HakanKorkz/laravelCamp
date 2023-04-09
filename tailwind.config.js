@@ -5,6 +5,7 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    important: true,
     theme: {
         extend: {
             colors: {
