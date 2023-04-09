@@ -9,6 +9,7 @@
     <title>@yield("tittle")</title>
     <script src="https://kit.fontawesome.com/2af7bc7436.js" crossorigin="anonymous"></script>
     @vite("resources/css/app.css")
+    <link rel="stylesheet" href="{{ asset("assets/home/plugins/notiflix/dist/notiflix-3.2.6.min.css") }}">
     @yield("headArea")
 </head>
 <body class="bg-zinc-100">
@@ -17,6 +18,7 @@
 
 @yield("footer")
 @include('sweetalert::alert')
+<script src="{{ asset("assets/home/plugins/notiflix/dist/notiflix-3.2.6.min.js") }}"></script>
 <script type="module" src="{{ asset("assets/home/js/App.js") }}"></script>
 </body>
 </html>
